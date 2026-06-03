@@ -10,7 +10,7 @@ Search public biomedical datasets from NCBI, NGDC, and CNGB by conversational qu
 ## Usage Trigger
 
 User asks for datasets related to a disease/treatment/species/subtype/data type combination. Examples:
-- "找结肠癌dMMR免疫治疗单细胞数据"
+- "Find colon cancer dMMR immunotherapy single-cell data"
 - "hepatocellular carcinoma PD-1 scRNA-seq baseline"
 - "lung cancer immunotherapy single cell data"
 
@@ -28,11 +28,11 @@ User asks for datasets related to a disease/treatment/species/subtype/data type 
 ### Step 1 — Parse Query
 
 Extract from user message:
-- **疾病/癌种** (disease/cancer): e.g. 结肠癌, colon cancer, hepatocellular carcinoma
-- **治疗方式** (treatment): e.g. 免疫治疗, immunotherapy, PD-1, chemotherapy
-- **物种** (species): human, mouse (defaults to human if unspecified)
-- **病理亚型** (subtype): e.g. dMMR, MSI-H, KRAS mutant
-- **数据类型** (data type): e.g. scRNA-seq, single-cell, RNA-seq, ChIP-seq, ATAC-seq
+- **Disease/Cancer**: e.g. colon cancer, hepatocellular carcinoma, lung cancer
+- **Treatment**: e.g. immunotherapy, PD-1, chemotherapy, baseline therapy
+- **Species**: human, mouse (defaults to human if unspecified)
+- **Pathology Subtype**: e.g. dMMR, MSI-H, KRAS mutant
+- **Data Type**: e.g. scRNA-seq, single-cell, RNA-seq, ChIP-seq, ATAC-seq
 
 If any critical field is missing, ask the user to clarify.
 
@@ -64,7 +64,7 @@ On auth error: ask user if they want to provide token or skip.
 
 Markdown table with **bold dataset ID**, article info (authors, title, journal, year, DOI), and direct links.
 
-**If no results:** "未找到符合条件的公共数据集，建议尝试调整关键词或更换数据源。"
+**If no results:** "No public datasets found matching your criteria. Try adjusting keywords or switching data sources."
 
 ## Factuality Requirements (Critical — No Hallucinations)
 
@@ -87,8 +87,6 @@ This skill handles scientific research data. **Fabricating a single dataset entr
 ### Why This Matters
 
 A researcher using wrong dataset IDs or fake article info could: waste weeks on non-existent data, cite non-existent papers, or compromise the validity of their research. The cost of hallucination here is far higher than in general conversation.
-
----
 
 ## Security Notes
 
